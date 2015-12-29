@@ -23,8 +23,15 @@ class ViewController1: UIViewController {
         self.view.addSubview(view1)
         self.view.addSubview(view2)
 
+        self.view.backgroundColor = UIColor.whiteColor()
         
+        let leading = 30
+        let trailing = 30
+        let metrics = ["leading":leading, "trailing":trailing]
         
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-90-[view1(==100)]-20-[view2(view1)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["view1": view1, "view2":view2]))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-leading-[view1]-trailing-|", options: NSLayoutFormatOptions(), metrics: metrics, views: ["view1": view1]))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-leading-[view2]-trailing-|", options: NSLayoutFormatOptions(), metrics: metrics, views: ["view1": view1, "view2":view2]))
         
     }
 }
